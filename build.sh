@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 # exit on error
 
+set -o errexit
 
-# set -o errexit
+poetry install
 
-# poetry install
+python manage.py collectstatic --no-input
+python manage.py migrate
 
-# python manage.py collectstatic --no-input
-# python manage.py migrate
-
-poetry run ./manage.py createsuperuser
+python manage.py createsuperuser
